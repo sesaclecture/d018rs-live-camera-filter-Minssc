@@ -27,19 +27,11 @@ class Filters:
         return self.current_kernel
 
     def switch_next_filter(self):
-        for i, k in enumerate(self.kernels.keys()):
-            if k == self.current_kernel:
-                break
-
-        next = list(self.kernels.keys())[(i + 1) % len(self.kernels)]
-        self.current_kernel = next
-        return self.current_kernel
+        klist = list(self.kernels.keys())
+        idx = klist.index(self.current_kernel)
+        self.current_kernel = klist[(idx + 1) % len(self.kernels)]
 
     def switch_previous_filter(self):
-        for i, k in enumerate(self.kernels.keys()):
-            if k == self.current_kernel:
-                break
-
-        next = list(self.kernels.keys())[(i - 1 + len(self.kernels)) % len(self.kernels)]
-        self.current_kernel = next
-        return self.current_kernel
+        klist = list(self.kernels.keys())
+        idx = klist.index(self.current_kernel)
+        self.current_kernel = klist[(idx - 1) % len(self.kernels)]
